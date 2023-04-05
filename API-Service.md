@@ -10,9 +10,7 @@ The ASAB API service is a module that provides a web interface for accessing and
 To use the ASAB API service module, you must first install the ASAB library. You can install it using pip:
 
 ```
-
-pip install asab
-
+$ pip install asab
 ```
 
 
