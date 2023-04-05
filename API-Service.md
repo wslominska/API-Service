@@ -1,7 +1,7 @@
 # API Service
 
 ## Introduction
-The ASAB library is a lightweight, asynchronous framework for building scalable and high-performance applications in Python. It provides various features for building microservices, such as a message bus, a scheduler, and an API service. This documentation focuses on the API service module of ASAB.
+Asynchronous Server App Boilerplate (ASAB) is a microservice platform for Python 3.7+ and asyncio that aims to minimize the amount of code that needs to be written when building a microservice or an application server. It provides various features for building microservices, such as a message bus, a scheduler, and an API service. This documentation focuses on the API service module of ASAB.
 
 ## ASAB API Service
 The ASAB API service is a module that provides a web interface for accessing and interacting with other microservices in an ASAB-based application. It allows developers to easily create HTTP endpoints that can be accessed by clients over the internet.
