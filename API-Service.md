@@ -4,14 +4,16 @@
 Asynchronous Server App Boilerplate (ASAB) is a microservice platform for Python 3.7+ and asyncio that aims to minimize the amount of code that needs to be written when building a microservice or an application server. It provides various features for building microservices, such as a message bus, a scheduler, and an API service. This documentation focuses on the API service module of ASAB.
 
 ## ASAB API Service
-The ASAB API service is a module that provides a web interface for accessing and interacting with other microservices in an ASAB-based application. It allows developers to easily create HTTP endpoints that can be accessed by clients over the internet.
+The ASAB API service is a module that provides a web interface for accessing and interacting with other microservices in an ASAB-based application. It allows developers to easily create HTTP endpoints that can be accessed by clients over the internet. Simply put, the interface provided by the API Service allows clients to interact with the application over the internet using HTTP endpoints.
 
 ### Installation
-To use the ASAB API service module, you must first install the ASAB library. You can install it using pip:
+
+To use the ASAB API Service module, you must first install the ASAB library. You can install it using pip by running the following command:
 
 ```
 $ pip install asab
 ```
+This will download and install the necessary dependencies and modules required to use the ASAB API service. Once the installation is complete, you can then import the ASAB library into your project and start creating HTTP endpoints using the API Service module.
 
 ### Usage
 
@@ -30,7 +32,8 @@ if __name__ == "__main__":
 ```
 In this example, we define a simple function called "hello" that returns a JSON object with a "message" key. We then create a new instance of the **Service** class and add our "hello" function to its router using the **add_get()** method. Finally, we start the web server using the **run()** method.
 
-This code allows a developer to easily create a simple HTTP endpoint that returns a JSON object using the ASAB API service module. By customizing the hello function with appropriate logic, developers can generate any type of response they need to serve their particular use case.
+This code allows a developer to easily create a simple HTTP endpoint that returns to the client as a JSON file, which they can easily use in their application system.
+By customizing the hello function with appropriate logic, developers can generate any type of response they need to serve their particular use case.
 
 ### HTTP Methods
 
@@ -70,7 +73,8 @@ In this example, we create a function called **create_user** that generates a JS
 
 ### URL Parameters
 
-You can also define endpoints that accept URL parameters. To do this, you can use the curly brace syntax to define a parameter in the URL pattern, and then access the parameter value in your function using the **request.match_info** object.
+You can also define endpoints that accept URL parameters. It means that clients can pass additional information to the endpoint by including certain values in the URL itself. 
+To do this, you can use the curly brace syntax to define a parameter in the URL pattern, and then access the parameter value in your function using the **request.match_info** object.
 
 For example, here is how you can create an endpoint that accepts a user ID parameter in the URL:
 The define section includes the following parameters:
@@ -96,7 +100,10 @@ In this example, we create a function called **get_user** that accepts a **reque
 
 ### Authentication
 
-The API Service also provides built-in support for authentication. You can use the add_authenticator() method to add an authenticator function to a route:
+The API Service also provides built-in support for authentication. It means that it can add authentication to the HTTP endpoints that you create - a function that verifies the identity of the user who is trying to access the endpoint.
+You can use the **add_authenticator()** method to add an authenticator function to a route. That ensures that only authorized users are able to access that endpoint.
+
+Take look at an example:
 
 ```
 def authenticate(request):
@@ -113,4 +120,4 @@ async def private(request):
     return {"message": "Welcome, {}!".format(request.user['username'])}
 ```
 
-In this example, the authenticate() function is called before the private() function. It checks for an "Authorization" header in the request and verifies the token. If the token is valid, it returns a dictionary with user information. If the token is not valid, it returns None and the request is rejected.
+In this example, the **authenticate()** function is called before the **private()** function. It checks for an "Authorization" header in the request and verifies the token. If the token is valid, it returns a dictionary with user information. If the token is not valid, it returns "None" and the request is rejected, preventing the client from accessing the **private()** function.
