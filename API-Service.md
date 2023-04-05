@@ -41,10 +41,10 @@ By customizing the hello function with appropriate logic, developers can generat
 
 The **Service** class supports the following HTTP methods:
 
-- GET: This method is used to request a resource from the server. It is typically used to retrieve data from a server.
-- POST: This method is used to submit data to be processed by a resource on the server. It is typically used for creating new resources on the server.
-- PUT: This method is used to update an existing resource on the server. It replaces the entire resource with the new data provided.
-- DELETE: This method is used to delete a resource on the server.
+- GET - This method is used to request a resource from the server. It is typically used to retrieve data from a server.
+- POST - This method is used to submit data to be processed by a resource on the server. It is typically used for creating new resources on the server.
+- PUT - This method is used to update an existing resource on the server. It replaces the entire resource with the new data provided.
+- DELETE - This method is used to delete a resource on the server.
 
 You can use these methods to create HTTP endpoints that can receive requests from clients and respond with appropriate data.
 
