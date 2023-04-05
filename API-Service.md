@@ -70,7 +70,7 @@ In this example, we create a function called **create_user** that generates a JS
 
 ### URL Parameters
 
-You can also define endpoints that accept URL parameters. To do this, you can use the curly brace syntax to define a parameter in the URL pattern, and then access the parameter value in your function using the request.match_info object.
+You can also define endpoints that accept URL parameters. To do this, you can use the curly brace syntax to define a parameter in the URL pattern, and then access the parameter value in your function using the **request.match_info** object.
 
 For example, here is how you can create an endpoint that accepts a user ID parameter in the URL:
 The define section includes the following parameters:
@@ -91,6 +91,8 @@ if __name__ == "__main__":
     app.router.add_get("/users/{user_id}", get_user)
     app.run()
 ```
+
+In this example, we create a function called **get_user** that accepts a **request object**. We use the **request.match_info** object to access the user ID parameter from the URL pattern ("/users/{user_id}"). Then, we use the retrieved user ID to fetch the user information from a database or any other source, and return the user information as a JSON object.
 
 ### Authentication
 
