@@ -13,10 +13,22 @@ To use the ASAB API service module, you must first install the ASAB library. You
 $ pip install asab
 ```
 
+### Usage
+The API service module provides a Service class that you can use to create HTTP endpoints. Here is an example of how to create a simple HTTP endpoint that returns a JSON object:
 
-## Custom Export
-First, select the Data Source.
-This selection will determine the other export options.
+```
+from asab.api.service import Service
+
+async def hello(request):
+    return {"message": "Hello, World!"}
+
+if __name__ == "__main__":
+    app = Service()
+    app.router.add_get("/", hello)
+    app.run()
+
+```
+
 
 Select the output.
 If you select CSV output, you must enter the column names.
