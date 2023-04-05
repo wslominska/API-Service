@@ -1,16 +1,20 @@
-# LogMan.io Export beta
+# API Service
 
-Create, run, remove or download exports.
-The new Export funtionality is now in *beta*.
+## Introduction
+The ASAB library is a lightweight, asynchronous framework for building scalable and high-performance applications in Python. It provides various features for building microservices, such as a message bus, a scheduler, and an API service. This documentation focuses on the API service module of ASAB.
 
-## List of Exports
-Green exports are successfully completed exports. Yellow exports are in progress. Failed exports are in red and scheduled exports are shown in blue. Click on the name of each export to open its detailed view. You can download or delete each export. The list of exports is sorted from the most recent expor to the most old. You can search the list by name using the search bar. You can make new export.
+## ASAB API Service
+The ASAB API service is a module that provides a web interface for accessing and interacting with other microservices in an ASAB-based application. It allows developers to easily create HTTP endpoints that can be accessed by clients over the internet.
 
-## Export Detail
-You can see complete information about a specific export on the Detail screen. Here you can also download and delete. The "Restart" runs the export again as is or with your custom changes. Deleting a scheduled export does not delete the exports that were generated from it.
+### Installation
+To use the ASAB API service module, you must first install the ASAB library. You can install it using pip:
 
-## Start Export
-The Start Export screen offers you pre-made Exports from the Library. You can run these directly or modify them and run them with your custom changes. The "Custom" button takes you to a blank form where you can create a self-made export.
+```
+
+pip install asab
+
+```
+
 
 ## Custom Export
 First, select the Data Source.
