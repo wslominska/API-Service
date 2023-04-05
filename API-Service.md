@@ -15,7 +15,7 @@ $ pip install asab
 
 ### Usage
 
-The API service module provides a Service class that you can use to create HTTP endpoints. Here is an example of how to create a simple HTTP endpoint that returns a JSON object:
+The API service module provides a **Service** class that you can use to create HTTP endpoints. Here is an example of how to create a simple HTTP endpoint that returns a JSON object:
 
 ```
 from asab.api.service import Service
@@ -28,25 +28,29 @@ if __name__ == "__main__":
     app.router.add_get("/", hello)
     app.run()
 ```
-In this example, we define a simple function called "hello" that returns a JSON object with a "message" key. We then create a new instance of the Service class and add our "hello" function to its router using the add_get() method. Finally, we start the web server using the run() method.
+In this example, we define a simple function called "hello" that returns a JSON object with a "message" key. We then create a new instance of the **Service** class and add our "hello" function to its router using the **add_get()** method. Finally, we start the web server using the **run()** method.
+
+This code allows a developer to easily create a simple HTTP endpoint that returns a JSON object using the ASAB API service module. By customizing the hello function with appropriate logic, developers can generate any type of response they need to serve their particular use case.
 
 ### HTTP Methods
 
-The Service class supports the following HTTP methods:
+The **Service** class supports the following HTTP methods:
 
 - GET
 - POST
 - PUT
 - DELETE
 
+You can use these methods to create HTTP endpoints that can receive requests from clients and respond with appropriate data.
+
 You can add endpoints for each of these methods using the following methods of the router object:
 
-- add_get()
-- add_post()
-- add_put()
-- add_delete()
+- **add_get()**
+- **add_post()**
+- **add_put()**
+- **add_delete()**
 
-For example, here is how you can create an endpoint that accepts a POST request and returns a JSON object:
+For example, let's say you want to create an endpoint that accepts a POST request and returns a JSON object containing user information. Here's how you can do it using the **add_post()** method:
 
 ```
 from asab.api.service import Service
@@ -61,6 +65,8 @@ if __name__ == "__main__":
     app.router.add_post("/users", create_user)
     app.run()
 ```
+
+In this example, we create a function called **create_user** that generates a JSON object containing user information. We then use the **add_post()** method to add the **create_user** function to the **Service** class router and specify the URL endpoint for the function ("/users" in this case).
 
 ### URL Parameters
 
