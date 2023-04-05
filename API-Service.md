@@ -46,7 +46,6 @@ You can add endpoints for each of these methods using the following methods of t
 - add_delete()
 
 For example, here is how you can create an endpoint that accepts a POST request and returns a JSON object:
-Exports defined in the `Exports` section of the Library and Advanced Exports share common YAML format.
 
 ```
 from asab.api.service import Service
@@ -62,43 +61,32 @@ if __name__ == "__main__":
     app.run()
 ```
 
-*Advanced export example*
+### URL Parameters
 
-```
-define:
-  name: Export e-mail
-  datasource: elasticsearch
+You can also define endpoints that accept URL parameters. To do this, you can use the curly brace syntax to define a parameter in the URL pattern, and then access the parameter value in your function using the request.match_info object.
 
-```
-** please complete it **
-
-Export files (or advanced exorts) may contain following sections:
-
-#### define
+For example, here is how you can create an endpoint that accepts a user ID parameter in the URL:
 The define section includes the following parameters:
 
-- `name`: The name of the export.
-- `datasource`: The name of the DataSource declaration in the Library, specified as a specified as an absolute path to the Library.
-- `output`: The output format for the export. Available options are "raw", "csv", and "xlsx" for ES DataSources, and "raw" for Kafka DataSources.
-- `header`: When using "csv" or "xlsx" output, you must specify the header of the resulting table as an array of column names. These will appear in the same order as they are listed.
-- `schedule`- There are three options how to schedule an export
-    - **datetime** in a format YYYY-MM-DD HH:mm (e.g. 2023-01-01 00:00)
-    - **timestamp** as integer (e.g. 1674482460)
-    - **cron** - you can refer to http://en.wikipedia.org/wiki/Cron for more details, random “R” definition keywords are supported, and remain consistent only within their croniter() instance, Vixie cron-style “@” keyword expressions are supported.
+```
+from asab.api.service import Service
 
+async def get_user(request):
+    # get the user ID from the URL parameters
+    user_id = request.match_info["user_id"]
+    
+    # fetch the user information from the database
+    user = {"id": user_id, "name": "John Doe", "email": "john.doe@example.com"}
+    return user
 
-#### target
-The target section includes the following parameters:
+if __name__ == "__main__":
+    app = Service()
+    app.router.add_get("/users/{user_id}", get_user)
+    app.run()
+```
 
-- `type`: An array of target types for the export. Possible options are "download", "email", and "jupyter". "download" is always selected if the target section is missing.
-- `email`: For email target type, you must specify at least the `to` field, which is an array of recipient email addresses. Other optional fields include:
-    - `cc`: an array of CC recipients
-    - `bcc`: an array of BCC recipients
-    - `from`: the sender's email address (string)
-    - `subject`: the subject of the email (string)
-    - `body`: a file name (with suffix) stored in the Template folder of the library, used as the email body template. You can also add special `parameters` to be used in the template. Otherwise, use any keyword from the define section of your export as a template parameter (for any export it is: `name`, `datasource`, `output`, for specific exports, you can also use parameters. `compression`, `header`, `schedule`, `timezone`, `tenant`).
+### Authentication
 
-#### query
-The query field must be a string containing an ElasticSearch query object. Please refer to ES documentation: https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl.html
+The ASAB API service module provides several authentication mechanisms that you can use to secure your endpoints. You can use the authentication middleware provided by the aiohttp library or implement your own custom middleware.
 
-
+To use the aiohttp authentication middleware, you can use the app.middlewares.append() method to add it to the list of middlewares used by the application:
