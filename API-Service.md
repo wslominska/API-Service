@@ -14,6 +14,7 @@ $ pip install asab
 ```
 
 ### Usage
+
 The API service module provides a Service class that you can use to create HTTP endpoints. Here is an example of how to create a simple HTTP endpoint that returns a JSON object:
 
 ```
@@ -87,6 +88,21 @@ if __name__ == "__main__":
 
 ### Authentication
 
-The ASAB API service module provides several authentication mechanisms that you can use to secure your endpoints. You can use the authentication middleware provided by the aiohttp library or implement your own custom middleware.
+The API Service also provides built-in support for authentication. You can use the add_authenticator() method to add an authenticator function to a route:
 
-To use the aiohttp authentication middleware, you can use the app.middlewares.append() method to add it to the list of middlewares used by the application:
+```
+def authenticate(request):
+    if 'Authorization' not in request.headers:
+        return None
+    token = request.headers['Authorization'].split(' ')[1]
+    if not verify_token(token):
+        return None
+    return {'username': get_username(token)}
+
+@api.add_route('GET', '/private')
+@api.add_authenticator(authenticate)
+async def private(request):
+    return {"message": "Welcome, {}!".format(request.user['username'])}
+```
+
+In this example, the authenticate() function is called before the private() function. It checks for an "Authorization" header in the request and verifies the token. If the token is valid, it returns a dictionary with user information. If the token is not valid, it returns None and the request is rejected.
