@@ -26,31 +26,41 @@ if __name__ == "__main__":
     app = Service()
     app.router.add_get("/", hello)
     app.run()
+```
+In this example, we define a simple function called "hello" that returns a JSON object with a "message" key. We then create a new instance of the Service class and add our "hello" function to its router using the add_get() method. Finally, we start the web server using the run() method.
+
+### HTTP Methods
+
+The Service class supports the following HTTP methods:
+
+- GET
+- POST
+- PUT
+- DELETE
+
+You can add endpoints for each of these methods using the following methods of the router object:
+
+- add_get()
+- add_post()
+- add_put()
+- add_delete()
+
+For example, here is how you can create an endpoint that accepts a POST request and returns a JSON object:
+Exports defined in the `Exports` section of the Library and Advanced Exports share common YAML format.
 
 ```
+from asab.api.service import Service
 
+async def create_user(request):
+    # create a new user and return their information
+    user = {"id": 1, "name": "John Doe", "email": "john.doe@example.com"}
+    return user
 
-Select the output.
-If you select CSV output, you must enter the column names.
-"Add new header" button adds more columns. You can change the order of the columns by dragging.
-The same order of columns will be in the resulting table.
-If you do not fill in the columns or their names do not match the search terms in the database, your table will be empty.
-
-Target option depends on the configuration of the Export function and can incude "e-mail" and "jupyter" targets.
-Jupyter exports the files directly to jupyter notebook integrated within LogMan.io.
-Choose a predefined e-mail template from the Library or create there your own from there.
-
-"Add schedule" button allows you to plan your export.
-Fill in date and time for one-off exports. You must stritly follow YYYY-MM-DD HH:mm format. Your date might look like this: *2023-01-01 12:00*.
-The second variant handes periodicaly scheduled exports. Use *cron* syntax for this option. 
-You can refer to http://en.wikipedia.org/wiki/Cron for more details, random “R” definition keywords are supported, Vixie cron-style “@” keyword expressions are supported.
-
-Query: https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl.html
-
-"Advanced" button lead you to YAML editor. Please see "Advanced" section for more infromation.
-
-## Advanced
-Exports defined in the `Exports` section of the Library and Advanced Exports share common YAML format.
+if __name__ == "__main__":
+    app = Service()
+    app.router.add_post("/users", create_user)
+    app.run()
+```
 
 *Advanced export example*
 
