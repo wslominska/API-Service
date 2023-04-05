@@ -1,10 +1,10 @@
 # API Service
 
 ## Introduction
-Asynchronous Server App Boilerplate (ASAB) is a microservice platform for Python 3.7+ and asyncio that aims to minimize the amount of code that needs to be written when building a microservice or an application server. It provides various features for building microservices, such as a message bus, a scheduler, and an API service. This documentation focuses on the API service module of ASAB.
+Asynchronous Server App Boilerplate (ASAB) is a microservice platform for Python 3.7+ and asyncio that aims to minimize the amount of code that needs to be written when building a microservice or an application server. It provides various features for building microservices, such as a message bus, a scheduler, and an API Service. This documentation focuses on the API Service module of ASAB.
 
 ## ASAB API Service
-The ASAB API service is a module that provides a web interface for accessing and interacting with other microservices in an ASAB-based application. It allows developers to easily create HTTP endpoints that can be accessed by clients over the internet. Simply put, the interface provided by the API Service allows clients to interact with the application over the internet using HTTP endpoints.
+The ASAB API Service is a module that provides a web interface for accessing and interacting with other microservices in an ASAB-based application. It allows developers to easily create HTTP endpoints that can be accessed by clients over the internet. Simply put, the interface provided by the API Service allows clients to interact with the application over the internet using HTTP endpoints.
 
 ### Installation
 
@@ -13,7 +13,7 @@ To use the ASAB API Service module, you must first install the ASAB library. You
 ```
 $ pip install asab
 ```
-This will download and install the necessary dependencies and modules required to use the ASAB API service. Once the installation is complete, you can then import the ASAB library into your project and start creating HTTP endpoints using the API Service module.
+This will download and install the necessary dependencies and modules required to use the ASAB API Service. Once the installation is complete, you can then import the ASAB library into your project and start creating HTTP endpoints using the API Service module.
 
 ### Usage
 
